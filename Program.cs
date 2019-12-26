@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ConsoleApp1
 {
@@ -6,36 +6,17 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int delit = 1, chisl;
             Console.WriteLine("Введите номер цифры последовательности:");
             int k = Convert.ToInt32(Console.ReadLine());
-            if(k<=9)
+            int kolichestvo = 0, nomer = 0;
+            double rez;
+            for(int i = 0; kolichestvo<k; i++)
             {
-                Console.WriteLine(k + "цифра в последовательности:");
-                Console.WriteLine(k);
+                nomer = i;
+                kolichestvo = (int)Math.Log10(nomer) + 1;
             }
-            else
-            {
-                if(k%2==0)
-                {
-                    Console.WriteLine(k + "цифра в последовательности:");
-                    Console.WriteLine(k/10);
-                }
-                else
-                {
-                    for(int i = 10;k>i;i*=10)
-                    {
-                        delit = i;
-                    }
-                    for(int i = delit;k>10;i/=10)
-                    {
-                        chisl = k / i;
-                        k = k - (chisl * i);
-                    }
-                    Console.WriteLine(k + "цифра в последовательности:");
-                    Console.WriteLine(k);
-                }
-            }
+            rez = nomer / Math.Pow(10, kolichestvo - k) % 10;
+            Console.WriteLine(rez);
         }
     }
 }
